@@ -15,7 +15,7 @@ public class StringCalculator {
 
 	public static void main(String[] args) throws IOException {
 		final Scanner sc = new Scanner(System.in);
-		System.out.println("Please eneter your string for calculation: ");
+		System.out.println("Please enter your string for calculation: ");
 
 
 		String s,n = "";
