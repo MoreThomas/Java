@@ -1,0 +1,50 @@
+div.link-list {
+        width:20.2em;
+        position:absolute;
+        top:0;
+        font-size:80%;
+        padding-left:5%;
+        padding-right:5%;
+        margin-left:0;
+        margin-right:0;
+}
+/* we leave some place on the side using the margin-* properties */
+#main {
+        margin-left:20em;
+        margin-right:20em;
+        padding-left:5em;
+        padding-right:5em;
+}
+/* and then we put each list on its place */
+#list1 {
+        left:0;
+        font-family: "Courier New", "Courier", monospace;
+		font-size: 1.05em;
+		text-decoration: underline;
+}
+#list2 {
+        right:0;
+}
+
+#titletext {
+	font-family: "Arial Black", "Gadget", sans-serif;
+	font-size: 1.5em;
+	line-height: 115%;
+	letter-spacing: 0.1em;
+	color: rgba(0,0,0,0.6);
+	background: green;
+	padding-left: 30px;
+	text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 0px -5px 35px rgba(255,255,255,0.3);
+}
+
+#authortext {
+	font-family: "MS Sans Serif", "Geneva", sans-serif;
+	font-size: 0.95em;
+	text-decoration: underline;
+}
+
+#newtext {
+	font-family: "Times New Roman", serif;
+	font-size: 0.85em;
+	line-height: 142%;
+}
