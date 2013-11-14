@@ -1,7 +1,5 @@
 package com.comparator;
 
-import java.util.Comparator;
-
 public class Student {
 	private String fio;
 	private int opschi, lisp, prolog, java;
@@ -47,28 +45,6 @@ public class Student {
 		
 	public int getABS() {
 		return Math.abs((opschi+prolog)/2);
-	}
-	
-	
-	static class SortByABS implements Comparator<Student> {
-
-		@Override
-		public int compare(Student s1, Student s2) {
-			int sum1 = s1.getABS();
-			int sum2 = s2.getABS();
-			
-			if(sum2 > sum1)
-				return 1;
-			else if(sum2 < sum1)
-				return -1;
-			else	
-				return 0;
-		}
-
-	}		
-	
-	public static Comparator<Student> getComparatorInstance() {
-		return new SortByABS();
 	}
 	
 }

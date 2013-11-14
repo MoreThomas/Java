@@ -2,6 +2,7 @@ package com.comparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class ComparatorTest {
 
@@ -14,7 +15,21 @@ public class ComparatorTest {
 		list.add(new Student("Ashomok Andrii Igorovich", 12, 11, 12, 11));
 		list.add(new Student("Zylzhuk Sergiy Valerivich", 10, 9, 11, 11));
 		
-		Collections.sort(list, Student.getComparatorInstance());		
+		Collections.sort(list, new Comparator<Student>() {
+
+			@Override
+			public int compare(Student s1, Student s2) {
+				int sum1 = s1.getABS();
+				int sum2 = s2.getABS();
+				
+				if(sum2 > sum1)
+					return 1;
+				else if(sum2 < sum1)
+					return -1;
+				else	
+					return 0;
+			}
+		});		
 		
 		for(Student s : list) 
 			System.out.println(s.getFio() + "\t" + s.getABS());
