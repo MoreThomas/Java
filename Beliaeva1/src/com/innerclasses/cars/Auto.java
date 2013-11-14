@@ -1,4 +1,4 @@
-package com.cars;
+package com.innerclasses.cars;
 
 public class Auto {
 	private String model, year;

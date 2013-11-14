@@ -1,4 +1,4 @@
-package com.cars;
+package com.innerclasses.cars;
 
 public interface ITovar {
 	int getDiscount();

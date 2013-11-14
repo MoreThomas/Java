@@ -1,4 +1,4 @@
-package com.comparator;
+package com.innerclasses.comparator;
 
 public class Student {
 	private String fio;
