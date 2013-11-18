@@ -47,4 +47,11 @@ public class Student {
 		return Math.abs((opschi+prolog)/2);
 	}
 	
+	public void updateAllParams(String fio, int opschi, int lisp, int prolog, int java) {
+		setFio(fio);
+		setOpschi(opschi);
+		setLisp(lisp);
+		setProlog(prolog);
+		setJava(java);
+	}
 }

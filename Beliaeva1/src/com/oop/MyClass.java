@@ -11,4 +11,8 @@ public class MyClass {
 		this.a = a;
 		System.out.println("Constructor Message. Value a is: "+a);
 	}
+	
+	void setA(String s) {
+		a = s;
+	}
 }
