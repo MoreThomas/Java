@@ -1,30 +1,35 @@
 package com.collections;
 
-import java.util.HashSet;
+import java.util.Random;
 
-//Не работает!
-public class DuplicatesCollection implements Comparable {
-	static Integer i1,i2;
-	public static void main(String[] args) {
-		i1 = new Integer(10);
-		i2 = 10;
-		HashSet<Integer> hash = new HashSet<Integer>();
+public class DuplicatesCollection implements Cloneable {
 
-		hash.add(i1);
-		hash.add(i2);		
-		
-		for (Integer integer : hash) {
-			System.out.println(integer);
-		}
-	}
+	private Integer i1;
 
-	@Override
-	public int compareTo(Object o) {
-		if((i1-i2) == 0)
-			return 1;
-		else 
-			return 0;
+	public DuplicatesCollection(Integer i1) {		
+		this.i1 = i1;
 	}
 	
-	
+	//	method not needed
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		else
+			return false;
+	}
+
+	//	method not needed
+	public int hashCode() {
+		Random rand = new Random(100);
+		return i1+rand.nextInt();
+	}
+
+	public Integer getI1() {
+		return i1;
+	}
+
+	//	method not needed 		
+	public DuplicatesCollection clone() throws CloneNotSupportedException {
+        return (DuplicatesCollection)super.clone();
+	}
 }
