@@ -18,7 +18,9 @@ public class DynamicExemplar {
 				System.in));
 
 		System.out
-				.print("Enter class name and method (for example java.lang.Integer.valueOf): ");
+				.print("Enter class name or class with invoke method, " +
+						"for example:\n\t- com.innerclasses.LocalShare;" +
+						"\n\t- com.innerclasses.LocalShare.main;\n--->");
 
 		try {
 			String str = reader.readLine();
@@ -28,34 +30,37 @@ public class DynamicExemplar {
 				System.exit(0);
 			}
 
+			// парсим введенную строку и извлекаем название метода
 			strMethod = str.substring(str.lastIndexOf(".") + 1,
 					str.length());
+			// парсим введенную строку и извлекаем название класса
 			String strClass = str.substring(0, str.lastIndexOf("."));
 
-			System.out.println(strClass + "\n" + strMethod);
+			System.out.println("Парсим строку ...\n"+"Класс: "+strClass + "\nМетод: " + strMethod);
 
+			// получаем инстанс искомого класса
 			cl = Class.forName(strClass);
-
-			Method[] methods = cl.getMethods();
+			// получам все медоты описанные в классе (public, private, protected, default)
+			Method[] methods = cl.getDeclaredMethods();
 
 			String outputType = null;			
 
 			for (Method method : methods) {
 
 				if (method.getName().equals(strMethod)) {
-					System.out.println("Возвращаемый тип: "
-							+ method.getReturnType().getName());
-					outputType = method.getReturnType().getName();
-					
-					Class[] paramTypes = method.getParameterTypes();
-					
-					System.out.print("Типы параметров: ");
-					if (paramTypes.length == 1)
-						chooseClass(paramTypes[0].getName());
-					else if (paramTypes.length > 1)
-						System.err
-								.println("Вызов методов с аргументами более 1го не реализовано.");					
+			
+//					outputType = method.getReturnType().getName();					
+//					Class[] paramTypes = method.getParameterTypes();					
+//					
+//					System.out.print("Типы параметров: ");
+//					if (paramTypes.length == 1)
+//						chooseClass(paramTypes[0].getName());
+//					else if (paramTypes.length > 1)
+//						System.err
+//								.println("Вызов методов с аргументами более 1го не реализовано.");					
 						
+					System.out.println("Структура метода: "+method.getReturnType().getName()+" "+method.getName()+"("+
+						getMethodParams(method.getParameterTypes())+")");
 				}
 			}
 			
@@ -63,10 +68,25 @@ public class DynamicExemplar {
 					
 //			System.out.println(method.invoke(cl, ""));
 
-		} catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | ClassNotFoundException| SecurityException | IOException e) {
+		} catch (/*NoSuchMethodException | IllegalAccessException | InvocationTargetException | */IllegalArgumentException | ClassNotFoundException| SecurityException | IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+	
+	static String getMethodParams(Class[] cl) {
+		StringBuffer s1 = new StringBuffer();
+		int count = cl.length;
+		for (Class class1 : cl) {			
+			s1.append(class1.getName());
+			if(--count > 0)
+				s1.append(", ");
+		}		
+		return s1.toString();
+	}	
+	
+	static void invokeMethod(Method m) {
+		
 	}
 	
 	public static void chooseClass(String inputType) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {		
@@ -80,6 +100,7 @@ public class DynamicExemplar {
 			getInt();
 		
 	}
+
 	
 	public static void getString() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Class[] c = new Class[]{String.class}; 
